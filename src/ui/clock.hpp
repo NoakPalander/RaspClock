@@ -18,7 +18,7 @@ namespace rasp {
         explicit Clock(QWidget* parent = nullptr);
         ~Clock() override;
 
-        void update(std::stop_token const& token);
+        void update(std::stop_token token);
 
     signals:
         void tick(QString string);

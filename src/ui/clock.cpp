@@ -33,7 +33,7 @@ namespace rasp {
         delete ui_;
     }
 
-    void Clock::update(std::stop_token const& token) {
+    void Clock::update(std::stop_token token) {
         while (!token.stop_requested()) {
             using namespace std::chrono_literals;
 

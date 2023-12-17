@@ -2,27 +2,19 @@
 #include "ui_clock.h"
 
 #include <chrono>
-#include <condition_variable>
 #include <iostream>
 #include <string>
 
 namespace {
     auto current_time() {
-        using namespace std::chrono;
-
-        auto const now = system_clock::now();
-        auto const tp = zoned_time{current_zone(), now}.get_local_time();
-        auto const dp = floor<days>(tp);
-
-        auto split = hh_mm_ss{floor<milliseconds>(tp - dp)};
-        return std::pair{split, now};
+        return std::chrono::system_clock::now();
     }
 
-    template<typename Duration>
-    std::string format(std::chrono::hh_mm_ss<Duration> time) {
-        auto hours = static_cast<unsigned int>(time.hours().count());
-        auto minutes = static_cast<unsigned int>(time.minutes().count());
-        auto seconds = static_cast<unsigned int>(time.seconds().count());
+    std::string format(std::chrono::time_point<std::chrono::system_clock> const& time) {
+        auto const count = std::chrono::time_point_cast<std::chrono::seconds>(time).time_since_epoch().count();
+        auto hours = std::chrono::duration_cast<std::chrono::hours>(std::chrono::seconds(count % 24)).count();
+        auto minutes = std::chrono::duration_cast<std::chrono::minutes>(std::chrono::seconds(count % 3600)).count();
+        auto seconds = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::seconds(count % 60)).count();
 
         return std::format("{:02}:{:02}:{:02}", hours, minutes, seconds);
     }
@@ -44,8 +36,8 @@ namespace rasp {
         while (!token.stop_requested()) {
             using namespace std::chrono_literals;
 
-            auto[now, time_point] = current_time();
-            auto const next = time_point + 1s;
+            auto now = current_time();
+            auto const next = now + 1s;
 
             auto const time = QString::fromStdString(format(now));
             emit tick(time);

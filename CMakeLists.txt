@@ -1,17 +1,15 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.18)
 project(RaspClock)
 
 set(CMAKE_CXX_STANDARD 20)
 
 include(${CMAKE_SOURCE_DIR}/ext/CMakeLists.txt)
-find_package(fmt CONFIG REQUIRED)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
-
 
 set(UIS
     ${CMAKE_SOURCE_DIR}/ui/mainwindow.ui

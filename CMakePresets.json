@@ -12,8 +12,7 @@
         "CMAKE_CXX_COMPILER": "g++",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "CMAKE_CXX_FLAGS_INIT": "-Wall -Wextra -Wconversion -pedantic-errors -ggdb3 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer",
-        "CMAKE_EXE_LINKER_FLAGS_INIT": "-fno-omit-frame-pointer -fsanitize=address,undefined",
-        "RASP_BINARY_DIR": "build/linux-debug"
+        "CMAKE_EXE_LINKER_FLAGS_INIT": "-fno-omit-frame-pointer -fsanitize=address,undefined"
       }
     },
     {
@@ -26,8 +25,7 @@
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_CXX_COMPILER": "g++",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-        "CMAKE_CXX_FLAGS_INIT": "-Wall -Wextra -Wconversion -pedantic-errors -O3 -ffast-math",
-        "RASP_BINARY_DIR": "build/linux-release"
+        "CMAKE_CXX_FLAGS_INIT": "-Wall -Wextra -Wconversion -pedantic-errors -O3 -ffast-math"
       }
     }
   ]

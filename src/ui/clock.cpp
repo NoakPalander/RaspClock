@@ -1,6 +1,7 @@
 #include "clock.hpp"
 #include "ui_clock.h"
 
+#include <fmt/format.h>
 #include <chrono>
 #include <iostream>
 #include <string>
@@ -16,7 +17,7 @@ namespace {
         auto minutes = std::chrono::duration_cast<std::chrono::minutes>(std::chrono::seconds(count % 3600)).count();
         auto seconds = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::seconds(count % 60)).count();
 
-        return std::format("{:02}:{:02}:{:02}", hours, minutes, seconds);
+        return fmt::format("{:02}:{:02}:{:02}", hours, minutes, seconds);
     }
 }
 

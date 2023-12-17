@@ -27,8 +27,11 @@ add_executable(RaspClock
     src/ui/clock.hpp
     src/ui/clock.ui)
 
+target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_20)
+
 target_link_libraries(RaspClock
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    fmt::fmt)
+    fmt::fmt
+    pthread)

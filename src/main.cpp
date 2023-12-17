@@ -4,6 +4,6 @@
 int main(int argc, char** argv) {
     [[maybe_unused]] QApplication app(argc, argv);
     rasp::MainWindow window;
-    window.show();
+    window.showFullScreen();
     return QApplication::exec();
 }

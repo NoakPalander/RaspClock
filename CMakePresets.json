@@ -1,0 +1,34 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "linux-debug",
+      "displayName": "Linux debug config",
+      "description": "The CMake preset for the debug configuration on Linux.",
+      "binaryDir": "build/linux-debug",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_CXX_FLAGS_INIT": "-Wall -Wextra -Wconversion -pedantic-errors -ggdb3 -O0 -fsanitize=address,undefined -fno-omit-frame-pointer",
+        "CMAKE_EXE_LINKER_FLAGS_INIT": "-fno-omit-frame-pointer -fsanitize=address,undefined",
+        "RASP_BINARY_DIR": "build/linux-debug"
+      }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux release config",
+      "description": "The CMake preset for the release configuration on Linux.",
+      "binaryDir": "build/linux-release",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_CXX_FLAGS_INIT": "-Wall -Wextra -Wconversion -pedantic-errors -O3 -ffast-math",
+        "RASP_BINARY_DIR": "build/linux-release"
+      }
+    }
+  ]
+}

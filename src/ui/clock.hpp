@@ -18,7 +18,7 @@ namespace rasp {
         explicit Clock(QWidget* parent = nullptr);
         ~Clock() override;
 
-        void update(std::stop_token token);
+        void tick_update();
 
     signals:
         void tick(QString string);
@@ -28,7 +28,8 @@ namespace rasp {
 
     private:
         Ui::clock* ui_;
-        std::jthread thread_;
+        std::thread thread_;
+        std::atomic_bool stop_;
     };
 }
 

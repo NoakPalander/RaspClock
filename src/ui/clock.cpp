@@ -22,20 +22,21 @@ namespace {
 }
 
 namespace rasp {
-    Clock::Clock(QWidget* parent) : QWidget(parent), ui_(new Ui::clock), thread_(&Clock::update, this, std::stop_token()) {
+    Clock::Clock(QWidget* parent) : QWidget(parent), ui_(new Ui::clock), thread_(&Clock::tick_update, this) {
         ui_->setupUi(this);
 
         connect(this, &Clock::tick, this, &Clock::on_tick);
     }
 
     Clock::~Clock() {
-        thread_.request_stop();
+        stop_ = true;
+        thread_.join();
         delete ui_;
     }
 
     // ReSharper disable once CppPassValueParameterByConstReference
-    void Clock::update(std::stop_token token) { // NOLINT(*-unnecessary-value-param)
-        while (!token.stop_requested()) {
+    void Clock::tick_update() { // NOLINT(*-unnecessary-value-param)
+        while (!stop_) {
             using namespace std::chrono_literals;
 
             auto now = current_time();

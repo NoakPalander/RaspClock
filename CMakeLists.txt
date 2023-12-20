@@ -25,7 +25,12 @@ add_executable(RaspClock
     src/ui/mainwindow.ui
     src/ui/clock.cpp
     src/ui/clock.hpp
-    src/ui/clock.ui)
+    src/ui/clock.ui
+        src/ui/settings.cpp
+        src/ui/settings.hpp
+        src/ui/settings.ui
+        src/widgets/SwitchButton.cpp
+        src/widgets/SwitchButton.hpp)
 
 target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_20)
 
@@ -35,3 +40,7 @@ target_link_libraries(RaspClock
     Qt5::Widgets
     fmt::fmt
     pthread)
+
+if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+    target_compile_definitions(RaspClock PRIVATE DEBUG)
+endif()

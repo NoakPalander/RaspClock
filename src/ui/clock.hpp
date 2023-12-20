@@ -1,6 +1,9 @@
 #ifndef RASP_CLOCK_HPP
 #define RASP_CLOCK_HPP
 
+#include "settings.hpp"
+
+
 #include <QWidget>
 #include <thread>
 
@@ -22,9 +25,6 @@ namespace rasp {
 
     signals:
         void tick(QString string);
-
-    private slots:
-        void on_tick(QString const& string) const;
 
     private:
         Ui::clock* ui_;

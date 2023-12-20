@@ -12,6 +12,14 @@
             </PerProfileState>
           </value>
         </entry>
+        <entry key="linux-release">
+          <value>
+            <PerProfileState>
+              <option name="myQmlPath" value="/usr/lib/qt/qml" />
+              <option name="myQtBinPath" value="/usr/bin" />
+            </PerProfileState>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

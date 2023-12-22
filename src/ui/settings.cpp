@@ -1,6 +1,6 @@
 #include "settings.hpp"
-#include "../widgets/ClockFormat.hpp"
 #include "ui_settings.h"
+#include <QPropertyAnimation>
 #include <filesystem>
 
 namespace rasp {

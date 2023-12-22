@@ -26,11 +26,16 @@ add_executable(RaspClock
     src/ui/clock.cpp
     src/ui/clock.hpp
     src/ui/clock.ui
-        src/ui/settings.cpp
-        src/ui/settings.hpp
-        src/ui/settings.ui
-        src/widgets/SwitchButton.cpp
-        src/widgets/SwitchButton.hpp)
+    src/ui/settings.cpp
+    src/ui/settings.hpp
+    src/ui/settings.ui
+    src/widgets/ClockFormat.cpp
+    src/widgets/ClockFormat.cpp
+    src/ui/options.cpp
+    src/ui/options.hpp
+    src/ui/options.ui
+        src/widgets/draggable_list.cpp
+        src/widgets/draggable_list.hpp)
 
 target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_20)
 

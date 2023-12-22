@@ -17,6 +17,9 @@ namespace rasp {
         explicit Settings(QWidget* parent = nullptr);
         ~Settings() override;
 
+    signals:
+        void opened();
+
     private:
         Ui::settings* ui_;
     };

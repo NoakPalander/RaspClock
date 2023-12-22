@@ -2,6 +2,8 @@
 #define RASP_MAINWINDOW_HPP
 
 #include <QMainWindow>
+#include <QKeyEvent>
+#include <stack>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,7 +20,10 @@ namespace rasp {
         ~MainWindow() override;
 
     private:
+        void keyPressEvent(QKeyEvent* event) override;
+
         Ui::mainwindow* ui_;
+        std::stack<QWidget*> pages_;
     };
 }
 
